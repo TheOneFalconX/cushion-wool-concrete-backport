@@ -3,7 +3,7 @@ package dev.woolbackport;
 import java.util.function.Function;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -37,8 +37,8 @@ public class WoolBackport implements ModInitializer {
                 props -> new StairBlock(wool.defaultBlockState(), props));
             Block slab = register(color + "_wool_slab", wool, SlabBlock::new);
 
-            ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COLORED_BLOCKS)
-                .register(entries -> entries.addAfter(wool, stairs, slab));
+            CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.BUILDING_BLOCKS)
+       .register(output -> output.insertAfter(wool, stairs, slab));
         }
     }
 
