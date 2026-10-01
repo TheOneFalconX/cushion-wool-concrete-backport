@@ -20,7 +20,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 
 
 public class WoolBackport implements ModInitializer {
-    public static final String MOD_ID = "woolbackport";
+    public static final String MOD_ID = "wccbp";
 
 
     private static final String[] COLORS = {
