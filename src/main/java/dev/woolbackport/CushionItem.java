@@ -22,7 +22,7 @@ public class CushionItem extends Item {
         Level level = context.getLevel();
         BlockPos placeAt = context.getClickedPos().relative(context.getClickedFace());
 
-        if (!level.isClientSide) {
+        if (!level.isClientSide()) {
             CushionEntity cushion = new CushionEntity(WoolBackport.CUSHION, level);
             cushion.setColor(color);
             Vec3 center = Vec3.atBottomCenterOf(placeAt);
