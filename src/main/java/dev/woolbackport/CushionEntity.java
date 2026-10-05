@@ -67,8 +67,6 @@ public class CushionEntity extends Entity {
         // No collision: other entities/players pass through instead of being blocked.
         return false;
     }
-
-    @Override
     public InteractionResult interact(Player player, InteractionHand hand) {
         if (this.level().isClientSide()) {
             return InteractionResult.SUCCESS;
