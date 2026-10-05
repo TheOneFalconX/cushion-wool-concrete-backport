@@ -29,7 +29,6 @@ public class CushionEntityRenderer extends EntityRenderer<CushionEntity, Cushion
         state.color = entity.getColor();
     }
 
-    @Override
     public Identifier getTextureLocation(CushionEntityRenderState state) {
         return Identifier.fromNamespaceAndPath(WoolBackport.MOD_ID, "textures/entity/cushion/" + state.color + ".png");
     }
@@ -39,7 +38,7 @@ public class CushionEntityRenderer extends EntityRenderer<CushionEntity, Cushion
         poseStack.pushPose();
         this.model.setupAnim(state);
         VertexConsumer vertexConsumer = buffer.getBuffer(RenderType.entityCutoutNoCull(getTextureLocation(state)));
-        this.model.renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY);
+        this.model.renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
         poseStack.popPose();
         super.render(state, poseStack, buffer, packedLight);
     }
