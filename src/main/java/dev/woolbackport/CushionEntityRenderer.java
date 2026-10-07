@@ -41,7 +41,7 @@ public class CushionEntityRenderer extends EntityRenderer<CushionEntity, Cushion
     @Override
     public void submit(CushionEntityRenderState state, PoseStack poseStack, SubmitNodeCollector collector, CameraRenderState cameraState) {
         super.submit(state, poseStack, collector, cameraState);
-        RenderType renderType = RenderTypes.entityCutoutNoCull(getTextureLocation(state));
+        RenderType renderType = RenderTypes.entityCutout(getTextureLocation(state));
         collector.submitCustomGeometry(poseStack, renderType, CushionEntityRenderer::addVertices);
     }
 
