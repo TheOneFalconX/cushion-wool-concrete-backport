@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
 import net.minecraft.client.renderer.rendertype.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -40,7 +41,7 @@ public class CushionEntityRenderer extends EntityRenderer<CushionEntity, Cushion
     @Override
     public void submit(CushionEntityRenderState state, PoseStack poseStack, SubmitNodeCollector collector, CameraRenderState cameraState) {
         super.submit(state, poseStack, collector, cameraState);
-        RenderType renderType = RenderType.entityCutoutNoCull(getTextureLocation(state));
+        RenderType renderType = RenderTypes.entityCutoutNoCull(getTextureLocation(state));
         collector.submitCustomGeometry(poseStack, renderType, CushionEntityRenderer::addVertices);
     }
 
