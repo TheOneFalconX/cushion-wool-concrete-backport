@@ -67,6 +67,7 @@ public class CushionEntity extends Entity {
         // No collision: other entities/players pass through instead of being blocked.
         return false;
     }
+        @Override
     public InteractionResult interact(Player player, InteractionHand hand) {
         if (this.level().isClientSide()) {
             return InteractionResult.SUCCESS;
@@ -74,9 +75,10 @@ public class CushionEntity extends Entity {
         if (!this.getPassengers().isEmpty() || player.isPassenger()) {
             return InteractionResult.PASS;
         }
-        player.startRiding(this);
+        player.startRiding(this, true, true);
         return InteractionResult.CONSUME;
     }
+    
 
     @Override
     public boolean hurtServer(ServerLevel level, DamageSource source, float amount) {
