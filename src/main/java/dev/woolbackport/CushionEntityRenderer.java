@@ -3,11 +3,11 @@ package dev.woolbackport;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.rendertype.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.resources.Identifier;
 
@@ -42,14 +42,14 @@ public class CushionEntityRenderer extends EntityRenderer<CushionEntity, Cushion
     public void submit(CushionEntityRenderState state, PoseStack poseStack, SubmitNodeCollector collector, CameraRenderState cameraState) {
         super.submit(state, poseStack, collector, cameraState);
         RenderType renderType = RenderTypes.entityCutout(getTextureLocation(state));
-        collector.submitCustomGeometry(poseStack, renderType, CushionEntityRenderer::addVertices);
+        int light = state.lightCoords;
+        collector.submitCustomGeometry(poseStack, renderType, (pose, consumer) -> addVertices(pose, consumer, light));
     }
 
-    private static void addVertices(PoseStack.Pose pose, VertexConsumer consumer) {
+    private static void addVertices(PoseStack.Pose pose, VertexConsumer consumer, int light) {
         float x0 = -0.5f, x1 = 0.5f;
         float z0 = -0.5f, z1 = 0.5f;
         float y0 = 0f, y1 = 0.25f;
-        int light = 0xF000F0;
         int overlay = 0;
 
         // Top
