@@ -69,7 +69,6 @@ public class CushionEntity extends Entity {
         return false;
     }
 
-    @Override
     public InteractionResult interact(Player player, InteractionHand hand) {
         if (this.level().isClientSide()) {
             return InteractionResult.SUCCESS;
