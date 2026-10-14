@@ -21,11 +21,19 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.sounds.SoundEvent;
 
 /** Backports 26.3's wool/concrete stairs and slabs, and cushions (as a real entity), to 26.2. */
 public class WoolBackport implements ModInitializer {
     public static final String MOD_ID = "wccbp";
 
+    public static final SoundEvent CUSHION_BREAK = registerSound("entity.cushion.break");
+
+    private static SoundEvent registerSound(String name) {
+        Identifier id = Identifier.fromNamespaceAndPath(MOD_ID, name);
+        ResourceKey<SoundEvent> key = ResourceKey.create(Registries.SOUND_EVENT, id);
+        return Registry.register(BuiltInRegistries.SOUND_EVENT, key, SoundEvent.createVariableRangeEvent(id));
+    }
     // Vanilla creative-tab order.
     private static final String[] COLORS = {
         "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray",
