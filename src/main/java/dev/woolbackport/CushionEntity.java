@@ -82,13 +82,6 @@ public class CushionEntity extends Entity {
 
     @Override
     public boolean hurtServer(ServerLevel level, DamageSource source, float amount) {
-        ItemStack drop = new ItemStack(WoolBackport.cushionItem(getColor()));
-        this.spawnAtLocation(level, drop);
-        this.discard();
-        return true;
-    }
-    @Override
-    public boolean hurtServer(ServerLevel level, DamageSource source, float amount) {
         // Play your custom cushion break sound right when it's broken
         level.playSound(null, this.blockPosition(), WoolBackport.CUSHION_BREAK, net.minecraft.sounds.SoundSource.BLOCKS, 1.0F, 1.0F);
 
