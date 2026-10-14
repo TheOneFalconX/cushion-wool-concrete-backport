@@ -86,4 +86,9 @@ public class CushionEntity extends Entity {
         this.discard();
         return true;
     }
+    @Override
+    protected SoundEvent getHurtSound(DamageSource source) {
+        // Ensure CBSounds.CUSHION_BREAK points to your registered break sound event
+        return CBSounds.CUSHION_BREAK; 
+    }
 }
